@@ -1,4 +1,4 @@
-import stremlit as st
+import streamlit as st
 import random
 st.title("나의 첫번째 앱")
 import streamlit as st
