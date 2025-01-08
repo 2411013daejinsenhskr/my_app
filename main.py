@@ -1,5 +1,14 @@
 import streamlit as st
 
+# 사이트 배경색을 하늘색으로 설정
+st.markdown("""
+    <style>
+        body {
+            background-color: #87CEEB;  # 하늘색
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # 앱 제목
 st.title("이미지 링크로 이미지 띄우기")
 
