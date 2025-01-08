@@ -4,7 +4,8 @@ import streamlit as st
 st.title("이미지 링크로 이미지 띄우기")
 
 # 사용자로부터 이미지 URL 입력 받기
-image_url = st.text_input("이미지 링크를 입력하세요 (예시:https://healingfactory.co.kr/data/files/dee27b6e7d998faa5dbeb3e36762c28d.jpg)")
+image_url = st.text_input("""이미지 링크를 입력하세요 (예시:https://healingfactory.co.kr/data/files/dee27b6e7d998faa5dbeb3e36762c28d.jpg)
+이것도 괜찮은듯 https://cdn.metavv.com/prod/uploads/thumbnail/images/10035361/164042153462084_md.png""")
 
 # "확인" 버튼 클릭 시 이미지 출력
 if st.button("확인"):
