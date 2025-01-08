@@ -1,7 +1,7 @@
 import streamlit as st
 
 # 앱 제목
-st.title("움직이는 이미지 띄우기")
+st.title("이미지 링크로 이미지 띄우기")
 
 # 사용자로부터 이미지 URL 입력 받기
 image_url = st.text_input("이미지 링크를 입력하세요 (예시:https://healingfactory.co.kr/data/files/dee27b6e7d998faa5dbeb3e36762c28d.jpg)")
@@ -9,54 +9,30 @@ image_url = st.text_input("이미지 링크를 입력하세요 (예시:https://h
 # "확인" 버튼 클릭 시 이미지 출력
 if st.button("확인"):
     if image_url:
-        # HTML, CSS, JavaScript로 이미지가 움직이도록 설정
-        st.components.v1.html(f"""
+        # 이미지 출력과 함께 레인보우 테두리 애니메이션을 적용
+        st.markdown(f"""
         <style>
-            .moving-image {{
-                position: absolute;
-                width: 100px;  /* 이미지 크기 */
-                height: auto;
+            .rainbow-border {{
+                border: 10px solid;
                 border-radius: 10px;
-                border: 5px solid #FF5733;  /* 테두리 설정 */
+                animation: rainbow-border 5s infinite;
+                display: inline-block;
+                padding: 10px;
+            }}
+            @keyframes rainbow-border {{
+                0% {{ border-color: red; }}
+                14% {{ border-color: orange; }}
+                28% {{ border-color: yellow; }}
+                42% {{ border-color: green; }}
+                57% {{ border-color: blue; }}
+                71% {{ border-color: indigo; }}
+                85% {{ border-color: violet; }}
+                100% {{ border-color: red; }}
             }}
         </style>
-
-        <div class="moving-image">
+        <div class="rainbow-border">
             <img src="{image_url}" alt="입력한 이미지" width="100%" />
         </div>
-
-        <script>
-            var img = document.querySelector('.moving-image img');
-            var container = document.body;
-            var directionX = 1;
-            var directionY = 1;
-            var speed = 3;
-            var posX = 0;
-            var posY = 0;
-
-            // 이미지 이동 함수
-            function moveImage() {{
-                posX += speed * directionX;
-                posY += speed * directionY;
-
-                // 벽에 닿으면 방향을 반대로 바꿈
-                if (posX >= container.clientWidth - img.offsetWidth || posX <= 0) {{
-                    directionX *= -1;
-                }}
-                if (posY >= container.clientHeight - img.offsetHeight || posY <= 0) {{
-                    directionY *= -1;
-                }}
-
-                img.style.left = posX + 'px';
-                img.style.top = posY + 'px';
-
-                // 매 프레임마다 호출하여 애니메이션 효과를 줌
-                requestAnimationFrame(moveImage);
-            }}
-            
-            // 이미지 이동 시작
-            moveImage();
-        </script>
-        """, height=600, width=800)
+        """, unsafe_allow_html=True)
     else:
         st.write("이미지 링크를 입력해주세요.")
