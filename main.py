@@ -11,5 +11,5 @@ else:
 
 if st.button("Aloha", type="tertiary"):
     st.write("Ciao")
-st.write('안녕하세요 저는 😊입니다')
+st.write('안녕하세요 저는 인성입니다')
 st.write('저의 이메일 주소는 daejin.sen.hs.kr')
