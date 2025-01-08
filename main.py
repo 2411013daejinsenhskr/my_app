@@ -1,5 +1,4 @@
 import streamlit as st
-import random
 
 # 앱 제목
 st.title("움직이는 이미지 띄우기")
@@ -35,6 +34,7 @@ if st.button("확인"):
             var posX = 0;
             var posY = 0;
 
+            // 이미지 이동 함수
             function moveImage() {{
                 posX += speed * directionX;
                 posY += speed * directionY;
@@ -50,8 +50,11 @@ if st.button("확인"):
                 img.style.left = posX + 'px';
                 img.style.top = posY + 'px';
 
+                // 매 프레임마다 호출하여 애니메이션 효과를 줌
                 requestAnimationFrame(moveImage);
             }}
+            
+            // 이미지 이동 시작
             moveImage();
         </script>
         """, height=600, width=800)
