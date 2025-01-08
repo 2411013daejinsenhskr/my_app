@@ -9,13 +9,13 @@ image_url = st.text_input("이미지 링크를 입력하세요 (예시:https://h
 # "확인" 버튼 클릭 시 이미지 출력
 if st.button("확인"):
     if image_url:
-        # 이미지 출력과 함께 레인보우 테두리 애니메이션을 적용
+        # 이미지 출력과 함께 레인보우 테두리 애니메이션을 빠르게 적용
         st.markdown(f"""
         <style>
             .rainbow-border {{
                 border: 10px solid;
                 border-radius: 10px;
-                animation: rainbow-border 5s infinite;
+                animation: rainbow-border 1s infinite;  /* 1초로 빠르게 애니메이션 설정 */
                 display: inline-block;
                 padding: 10px;
             }}
