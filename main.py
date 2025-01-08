@@ -9,12 +9,6 @@ image_url = st.text_input("이미지 링크를 입력하세요 (예시:https://h
 # "확인" 버튼 클릭 시 이미지 출력
 if st.button("확인"):
     if image_url:
-        # 이미지 출력
         st.image(image_url, caption="입력한 이미지", use_column_width=True)
-        
-        # 링크 복사를 위한 JavaScript 코드
-        st.markdown(f"""
-        <a href="#" onclick="navigator.clipboard.writeText('{image_url}')">이미지 링크 복사하기</a>
-        """, unsafe_allow_html=True)
     else:
         st.write("이미지 링크를 입력해주세요.")
