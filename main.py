@@ -1,4 +1,5 @@
 import streamlit as st
+import random
 
 # 앱 제목
 st.title("움직이는 이미지 띄우기")
@@ -9,39 +10,16 @@ image_url = st.text_input("이미지 링크를 입력하세요 (예시:https://h
 # "확인" 버튼 클릭 시 이미지 출력
 if st.button("확인"):
     if image_url:
-        # HTML, CSS, JavaScript를 사용해 이미지가 움직이도록 설정
-        st.markdown(f"""
+        # HTML, CSS, JavaScript로 이미지가 움직이도록 설정
+        st.components.v1.html(f"""
         <style>
-        @keyframes move {
-            0% {{
-                left: 0%;
-                top: 50%;
+            .moving-image {{
+                position: absolute;
+                width: 100px;  /* 이미지 크기 */
+                height: auto;
+                border-radius: 10px;
+                border: 5px solid #FF5733;  /* 테두리 설정 */
             }}
-            25% {{
-                left: 90%;
-                top: 10%;
-            }}
-            50% {{
-                left: 0%;
-                top: 90%;
-            }}
-            75% {{
-                left: 90%;
-                top: 50%;
-            }}
-            100% {{
-                left: 0%;
-                top: 50%;
-            }}
-        }}
-        
-        .moving-image {{
-            position: absolute;
-            animation: move 5s infinite ease-in-out;
-            width: 100px; /* 이미지 크기 */
-            border-radius: 10px;
-            border: 5px solid #FF5733; /* 테두리 설정 */
-        }}
         </style>
 
         <div class="moving-image">
@@ -49,25 +27,26 @@ if st.button("확인"):
         </div>
 
         <script>
-            var img = document.querySelector('.moving-image');
+            var img = document.querySelector('.moving-image img');
             var container = document.body;
             var directionX = 1;
             var directionY = 1;
-            var speed = 5;
+            var speed = 3;
             var posX = 0;
             var posY = 0;
 
             function moveImage() {{
                 posX += speed * directionX;
                 posY += speed * directionY;
-                
+
+                // 벽에 닿으면 방향을 반대로 바꿈
                 if (posX >= container.clientWidth - img.offsetWidth || posX <= 0) {{
                     directionX *= -1;
                 }}
                 if (posY >= container.clientHeight - img.offsetHeight || posY <= 0) {{
                     directionY *= -1;
                 }}
-                
+
                 img.style.left = posX + 'px';
                 img.style.top = posY + 'px';
 
@@ -75,6 +54,6 @@ if st.button("확인"):
             }}
             moveImage();
         </script>
-        """, unsafe_allow_html=True)
+        """, height=600, width=800)
     else:
         st.write("이미지 링크를 입력해주세요.")
