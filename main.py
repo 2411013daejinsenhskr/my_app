@@ -1,10 +1,13 @@
 import streamlit as st
 
-# 사이트 배경색을 하늘색으로 설정
+# 배경색을 하늘색으로 설정하는 CSS 스타일
 st.markdown("""
     <style>
-        body {
-            background-color: #87CEEB;  # 하늘색
+        .reportview-container {
+            background-color: #87CEEB;
+        }
+        .sidebar .sidebar-content {
+            background-color: #87CEEB;
         }
     </style>
 """, unsafe_allow_html=True)
